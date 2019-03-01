@@ -6,8 +6,7 @@ function Layout(props){
     return (
         <div className="App">
         <Header 
-        changeView={props.changeView}
-        cart={props.shoppingCart}/>
+        changeView={props.changeView}/>
     <div className="container">
         <div className="row">
             <div className="col-md-3">
