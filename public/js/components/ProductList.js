@@ -3,8 +3,10 @@ class ProductList extends React.Component{
         products: []
     }
     componentDidMount(){ 
-        let products = store.getState().products
-        this.setState({products})
+        store.subscribe( () => {
+            let products = store.getState().products
+            this.setState({products})
+        })
     }
 
     render(){
@@ -13,7 +15,6 @@ class ProductList extends React.Component{
             productDetails = this.state.products.map((p,i)=>{
                 return  <ProductDetail 
                 showAddButton = {true}
-                addToCart={this.state.addItemToCart}
                 key={i} 
                 product={p} />
             });

@@ -2,7 +2,6 @@ function shoppingCart(state, action) {
   if (typeof state === 'undefined') {
     return []
   }
-
   switch (action.type) {
     case 'ADD_PRODUCT_TO_CART':
       return [...state, action.value];
@@ -14,8 +13,13 @@ function products(state,action){
   if (typeof state === 'undefined') {
     return []
   }
+  switch(action.type){
+    case "PRODUCTS_LOADED":
+      return [...state,...action.value];
+    default:
+      return state
+  } 
 
-  return state
 }
 
 let reducers = Redux.combineReducers({
