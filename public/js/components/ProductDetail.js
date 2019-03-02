@@ -9,43 +9,53 @@
     "price": "$95.11"
   }
   */
- function ProductDetail (props){
+ class ProductDetail extends React.Component{
 
+  addToCart(){
+    store.dispatch({type:"ADD_PRODUCT_TO_CART",value:this.props.product})
+  }
+
+  makeButton(){
+    let btnAddToCart = "";
+    if(this.props.showAddButton){
+      btnAddToCart =   <button onClick={(event)=>{
+        this.addToCart(this.props.product);
+      }}>Add To Cart</button>
+    }
+    return btnAddToCart
+  }
+
+  makeStar(){
     let star = [];
-    for(let i = 0; i < props.product.rating; i ++){
+    for(let i = 0; i < this.props.product.rating; i ++){
       star.push(<span key={i} className="glyphicon glyphicon-star"></span>);
     }
     let emptystars = []
     emptystars.push(<span class="glyphicon glyphicon-star-empty"></span>)
+    return star
+  }
 
-    let btnAddToCart = "";
-    if(props.showAddButton){
-      btnAddToCart =   <button onClick={(event)=>{
-            props.addToCart(props.product);
-        }}>Add To Cart</button>
-    }
-
-    return ( <div className="col-sm-4 col-lg-4 col-md-4">
-    <div className="thumbnail">
+  render(){
+  return ( 
+    <div className="col-sm-4 col-lg-4 col-md-4">
+      <div className="thumbnail">
         <img src="http://placehold.it/320x150" alt=""/>
         <div className="caption">
             <h4 className="pull-right">
-            {props.product.price}</h4>
-            <h4><a href="#">{props.product.name}</a>
+            {this.props.product.price}</h4>
+            <h4><a href="#">{this.props.product.name}</a>
             </h4>
-            <p>{props.product.description}</p>
+            <p>{this.props.product.description}</p>
         </div>
         <div className="ratings">
             <p className="pull-right">
-            {props.product.reviews.length} reviews</p>
+            {this.props.product.reviews} reviews</p>
             <p>
-                
-                {star}
+                {this.makeStar()}
             </p>
         </div>
-        
-      {btnAddToCart}
-
-    </div>
-</div>);
+        {this.makeButton()}
+      </div>
+    </div>);
+  }
 }
