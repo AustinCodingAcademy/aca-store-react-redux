@@ -1,11 +1,21 @@
-function ProductList(props){
+class ProductList extends React.Component{
 
+    state = {
+        products:[]
+    }
+
+    componentDidMount(){
+        let prods = store.getState().products;
+        this.setState({products:prods})
+    }
+
+    render(){
     let productDetails = null;
-    if(props.products && props.products.length > 0){
-        productDetails = props.products.map((p,i)=>{
+    if(this.state.products && this.state.products.length > 0){
+        productDetails = this.state.products.map((p,i)=>{
             return  <ProductDetail 
             showAddButton = {true}
-            addToCart={props.addItemToCart}
+            // addToCart={this.props.addItemToCart}
             key={i} 
             product={p} />
         });
@@ -17,4 +27,5 @@ function ProductList(props){
           {productDetails}
       </div>
     )
+  }
 }

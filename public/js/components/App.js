@@ -30,10 +30,9 @@ class App extends React.Component{
 
        if(this.state.whatToShow ===0){
         content = <ProductList 
-            addItemToCart ={this.addItemToCart}
-            products={this.state.products} />
+            addItemToCart ={this.addItemToCart} />
        }else{
-        content = <ShoppingCart cart={this.state.shoppingCart} />
+        content = <ShoppingCart />
        }
         return (
         <Layout 
