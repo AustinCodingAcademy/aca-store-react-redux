@@ -15,7 +15,6 @@ class ProductList extends React.Component{
         productDetails = this.state.products.map((p,i)=>{
             return  <ProductDetail 
             showAddButton = {true}
-            // addToCart={this.props.addItemToCart}
             key={i} 
             product={p} />
         });

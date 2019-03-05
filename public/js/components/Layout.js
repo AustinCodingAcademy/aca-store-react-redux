@@ -1,8 +1,4 @@
-
 function Layout(props){
-
-//all code here
-
     return (
         <div className="App">
         <Header 
