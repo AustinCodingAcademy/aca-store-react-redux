@@ -6,8 +6,16 @@ class ProductList extends React.Component {
 
     componentDidMount() {
 
-        this.setState({products: store.getState().products});
+        //this.setState({products: store.getState().products});
+        store.subscribe(() => {
+            let theProducts = store.getState().products;
+            this.setState({products: theProducts[0]});
+        });
+        if (store.getState().products.length == 1) {
+            this.setState({products: store.getState().products[0]});
+        }
     }
+
 
     render() {
         let productDetails = null;

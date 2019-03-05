@@ -9,8 +9,12 @@ class App extends React.Component{
      .then((response)=> {
        return response.json();
      })
-     .then((data) =>{
-        store.dispatch({type: "PRODUCTS_LOADED", value: data})
+     .then((data) => {
+        let data2 = data.map(product => {
+            product.reviews = product.reviews.length;
+            return product;
+        });
+        store.dispatch({type: "PRODUCTS_LOADED", value: data2})
      });
     }
 
