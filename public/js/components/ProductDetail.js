@@ -15,13 +15,11 @@
     for(let i = 0; i < props.product.rating; i ++){
       star.push(<span key={i} className="glyphicon glyphicon-star"></span>);
     }
-    let emptystars = []
-    emptystars.push(<span class="glyphicon glyphicon-star-empty"></span>)
 
     let btnAddToCart = "";
     if(props.showAddButton){
       btnAddToCart =   <button onClick={(event)=>{
-            props.addToCart(props.product);
+            store.dispatch({type: "ADD_PRODUCT_TO_CART", value: props.product})
         }}>Add To Cart</button>
     }
 
@@ -37,7 +35,7 @@
         </div>
         <div className="ratings">
             <p className="pull-right">
-            {props.product.reviews.length} reviews</p>
+            {props.product.reviews} reviews</p>
             <p>
                 
                 {star}

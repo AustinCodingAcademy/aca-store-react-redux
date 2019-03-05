@@ -1,20 +1,39 @@
-function ProductList(props){
+class ProductList extends React.Component {
 
-    let productDetails = null;
-    if(props.products && props.products.length > 0){
-        productDetails = props.products.map((p,i)=>{
-            return  <ProductDetail 
-            showAddButton = {true}
-            addToCart={props.addItemToCart}
-            key={i} 
-            product={p} />
-        });
-    }else{
-        productDetails = "No products available";
+    state = {
+        products: []
     }
-    return (
-      <div>
-          {productDetails}
-      </div>
-    )
+
+    componentDidMount() {
+
+        //this.setState({products: store.getState().products});
+        store.subscribe(() => {
+            let theProducts = store.getState().products;
+            this.setState({products: theProducts[0]});
+        });
+        if (store.getState().products.length == 1) {
+            this.setState({products: store.getState().products[0]});
+        }
+    }
+
+
+    render() {
+        let productDetails = null;
+        if(this.state.products && this.state.products.length > 0){
+            productDetails = this.state.products.map((p,i)=>{
+                return  <ProductDetail 
+                showAddButton = {true}
+                key={i} 
+                product={p} />
+            });
+        }
+        else{
+            productDetails = "No products available";
+        }
+        return (
+          <div>
+              {productDetails}
+          </div>
+        );
+    }
 }

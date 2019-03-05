@@ -1,7 +1,9 @@
 state =  {
   shoppingCart:[],
-  numberOfItemsInCart: 0,
-  products: [ {
+
+  products: [
+   /*
+    {
     "id": 1,
     "name": "Body Luxuries Sweet Lavender Hand Sanitizer",
     "description": "Cleans your hands",
@@ -81,5 +83,7 @@ state =  {
     "rating": 2,
     "imgUrl": "http://dummyimage.com/189x109.png/cc0000/ffffff",
     "price": "$74.37"
-  }]
+  }
+  */
+]
 }
