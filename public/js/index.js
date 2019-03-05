@@ -15,7 +15,7 @@ function products(state,action){
   }
   switch(action.type){
     case "PRODUCTS_LOADED":
-      return [...state,...action.value];
+      return [...state, ...action.value];
     default:
       return state
   } 
