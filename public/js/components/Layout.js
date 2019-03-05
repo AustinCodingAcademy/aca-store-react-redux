@@ -1,37 +1,37 @@
 
-function Layout(props){
+function Layout(props) {
 
-//all code here
+    //all code here
 
     return (
         <div className="App">
-        <Header 
-        changeView={props.changeView}
-        cart={props.shoppingCart}/>
-    <div className="container">
-        <div className="row">
-            <div className="col-md-3">
-                <p className="lead">Shop Name</p>
-                <div className="list-group">
-                    <a href="#" className="list-group-item">Category 1</a>
-                    <a href="#" className="list-group-item">Category 2</a>
-                    <a href="#" className="list-group-item">Category 3</a>
-                </div>
-            </div>
-            {/*comments */}
-            <div className="col-md-9">
-                <Carousel />
+            <Header
+                changeView={props.changeView}
+                cart={props.shoppingCart} />
+            <div className="container">
                 <div className="row">
-                    {props.children}
+                    <div className="col-md-3">
+                        <p className="lead">Shop Name</p>
+                        <div className="list-group">
+                            <a href="#" className="list-group-item">Category 1</a>
+                            <a href="#" className="list-group-item">Category 2</a>
+                            <a href="#" className="list-group-item">Category 3</a>
+                        </div>
+                    </div>
+                    {/*comments */}
+                    <div className="col-md-9">
+                        <Carousel />
+                        <div className="row">
+                            {props.children}
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <div className="container">
+            <div className="container">
 
-        <hr/>
-        <Footer />
-    </div>
+                <hr />
+                <Footer />
+            </div>
         </div>
     );
 }
