@@ -6,9 +6,13 @@ class ProductList extends React.Component{
         let prods = store.getState().products
         this.setState({products:prods})
     })
+    let prods = store.getState().products
+    this.setState({products:prods})
+
     }
 
     render(){
+         
         let productDetails = null;
         if(this.state.products && this.state.products.length > 0){
             productDetails = this.state.products.map((p,i)=>{
