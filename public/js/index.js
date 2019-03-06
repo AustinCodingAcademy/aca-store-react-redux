@@ -11,12 +11,27 @@ function shoppingCart(state, action) {
   }
 }
 
+function products(state, action) {
+  if (typeof state === 'undefined') {
+    return []
+  }
 
-ReactDOM.render(
-    <App 
-      numberOfItemsInCart = {state.numberOfItemsInCart}
-      products={state.products}
-    />
-    ,document.getElementById("root"));
+  switch(action.type){
+    case "PRODUCTS_LOADED":
+      return [...state,...action.value];
+    default:
+      return state
+
+  }
+}
+
+let reducers = Redux.combineReducers({
+  shoppingCart,products
+})
+
+let store = Redux.createStore(reducers,state)
+
+
+ReactDOM.render(<App/>,document.getElementById("root"));
 
 
