@@ -17,11 +17,11 @@
     }
     let emptystars = []
     emptystars.push(<span class="glyphicon glyphicon-star-empty"></span>)
-
+    
     let btnAddToCart = "";
     if(props.showAddButton){
       btnAddToCart =   <button onClick={(event)=>{
-            props.addToCart(props.product);
+        store.dispatch({type:"ADD_PRODUCT_TO_CART",value:props.product});
         }}>Add To Cart</button>
     }
 
