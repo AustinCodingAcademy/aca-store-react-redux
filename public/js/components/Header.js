@@ -1,5 +1,20 @@
-function Header(props){
-    return (
+class Header extends React.Component{
+
+    state = {
+        cartCount:0
+    }
+
+    componentDidMount(){
+        store.subscribe(()=>{
+            let numInCart = store.getState().shoppingCart.length;
+            this.setState(()=>{
+                return {cartCount:numInCart}
+        })
+      }
+    )}
+
+    render(){
+        return (
         <nav className="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div className="container">
           
@@ -26,16 +41,16 @@ function Header(props){
                     </li>
                     <li>
                         <a onClick={()=>{
-                            props.changeView(0)
+                            this.props.changeView(0)
                         }}
                         href="#">Products</a>
                     </li>
                     <li >
                         <a onClick={()=>{
-                            props.changeView(1)
+                            this.props.changeView(1)
                         }}
                         
-                        href="#">Items In Cart ({props.cart.length})</a>
+                        href="#">Items In Cart ({this.state.cartCount})</a>
                     </li>
                 </ul>
             </div>
@@ -44,4 +59,5 @@ function Header(props){
       
     </nav>
   );
+ }
 }
