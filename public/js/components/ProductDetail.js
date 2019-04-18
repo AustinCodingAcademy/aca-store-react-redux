@@ -21,7 +21,9 @@
     let btnAddToCart = "";
     if(props.showAddButton){
       btnAddToCart =   <button onClick={(event)=>{
-            props.addToCart(props.product);
+            let message = {type:"ADD_PRODUCT_TO_CART",value:props.product}
+            store.dispatch(message);
+
         }}>Add To Cart</button>
     }
 
